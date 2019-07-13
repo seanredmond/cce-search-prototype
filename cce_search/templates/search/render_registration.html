@@ -1,0 +1,94 @@
+<div class="info-card registration grid-container">
+  <h3>Registration {{ result['registrations'][0]['number'] }}</h3>
+
+  <div>
+    <dl class="grid-row">
+      <dt class="grid-col-2">Title</dt>
+      <dd class="grid-col-9">{{ result['title'] }}</dd>
+      
+      <dt class="grid-col-2">Authors</dt>
+      <dd class="grid-col-9">
+        <ul class="usa-list usa-list--unstyled">
+          {% for a in result['authors'] %}
+          <li>{{ a }}</li>
+          {% endfor %}
+        </ul>
+      </dd>
+
+      <dt class="grid-col-2">Registrations</dt>
+      <dd class="grid-col-9">
+        <ul class="usa-list usa-list--unstyled">
+          {% for r in result['registrations'] %}
+          <li>{{ r['number'] }} {{ r['date'] }}</li>
+          {% endfor %}
+        </ul>
+      </dd>
+
+      {% if result['copies'] %}
+      <dt class="grid-col-2">Copies</dt>
+      <dd class="grid-col-9">{{ result['copies'] }}</dd>
+      {% endif %}
+      
+      {% if result['copy_date'] %}
+      <dt class="grid-col-2">Copy Date</dt>
+      <dd class="grid-col-9">{{ result['copy_date'] }}</dd>
+      {% endif %}
+      
+      {% if result['description'] %}
+      <dt class="grid-col-2">Description</dt>
+      <dd class="grid-col-9">{{ result['description'] }}</dd>      
+      {% endif %}
+      
+      {% if result['pub_date'] %}
+      <dt class="grid-col-2">Publication Date</dt>
+      <dd class="grid-col-9">{{ result['pub_date'] }}</dd>
+      {% endif %}
+      
+      {% if result['publishers'] %}
+      <dt class="grid-col-2">Publishers</dt>
+      <dd class="grid-col-9">
+        <ul class="usa-list usa-list--unstyled">
+          {% for p in result['publishers'] %}
+          <li>{{ p }}</li>
+          {% endfor %}
+        </ul>
+      </dd>
+      {% endif %}
+      
+      <dt class="grid-col-2">Renewals</dt>
+      <dd class="grid-col-9">
+        {% if result['renewals'] %}
+        <ul class="child-renewal grid-container usa-list usa-list--unstyled">
+          {% for renewal in result['renewals'] %}
+          <li class="grid-row">
+            {% include "search/render_child_renewal.html" %}
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <em>No renewals found</em>
+        {% endif %}
+        
+      </dd>
+      
+      <dt class="grid-col-2">Source</dt>
+      <dd class="grid-col-9">
+        <a href="{{ result['source_url'] }}">
+          {{ result['source']['year'] }} p. {{ result['source']['page'] }}
+        </a>
+      </dd>
+      
+      <dt class="grid-col-2">Original</dt>
+      <dd class="grid-col-9">{{ result['original'] }}</dd>
+      
+      <dt class="grid-col-2">CCEID</dt>
+      <dd class="grid-col-9">
+        <a href="/cceid/{{ result['uuid'] }}">{{ result['uuid'] }}</a>
+      </dd>
+
+      
+    </dl>
+
+  </div>
+
+</div>

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h2>{% block title %}Find Copyright Entries{% endblock %}</h2>
+{% endblock %}
+
+  {% block content %}
+  <div class="grid-row">
+    <div class="grid-col-8">
+      <h3>Search</h3>
+      <form method="get" class="usa-form">
+        <fieldset class="usa-fieldset">
+          <legend>Search Type</legend>
+          <div class="usa-radio">
+            <input class="usa-radio__input" id="type_ft" type="radio"
+                   {% if search_type == "ft" %}checked{% endif %} name="type"
+                   value="ft">
+            <label class="usa-radio__label" for="type_ft">Full Text</label>
+          </div>
+          <div class="usa-radio">
+            <input class="usa-radio__input" id="type_registration" type="radio"
+                   {% if search_type == "reg" %}checked{% endif %} name="type"
+                   value="reg">
+            <label class="usa-radio__label" for="type_registration">Registration Number</label>
+          </div>
+          <div class="usa-radio">
+            <input class="usa-radio__input" id="type_renewal" type="radio"
+                   {% if search_type == "ren" %}checked{% endif %} name="type"
+                   value="ren">
+            <label class="usa-radio__label" for="type_renewal">Renewal Number</label>
+          </div>
+        </fieldset>
+
+
+        <label for="term" class="usa-label">Search For</label>
+        <input name="term" id="term" required class="usa-input"
+               {% if term %} value="{{ term }}" {% endif %} >
+        
+        <input type="submit" value="Search" class="usa-button">
+      </form>
+    </div>
+    
+    <div class="grid-col-4">
+      <h3>Search Hints</h3>
+
+      <ul>
+        <li>Use “Full Text” for authors, titles, and publishers</li>
+        <li>Use quotation marks to search phrases (for example &quot;Grapes of Wrath&quot;)</li>
+        <li>Searches are case insensitive</li>
+        <li>Renewal numbers look like <tt>R12345</tt> or <tt>RE12345</tt></li>
+        <li>Registration numbers look like <tt>A12345</tt>, <tt>BB12345</tt>, <tt>D12345</tt>. That is, they start with many letters or combination of letters, but not “R” or “RE”</li>
+      </ul>
+    </div>
+  </div>
+
+  {% if results %}
+  <h2>Results</h2>
+
+  {% include "search/paging.html" %}
+
+  <ul>
+    {% for result in results %}
+      {% if result['type'] %}
+        {% include "search/render_renewal.html" %}
+      {% else %}
+        {% include "search/render_registration.html" %}
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+  {% endif %}
+
+  {% include "search/paging.html" %}
+{% endblock %}

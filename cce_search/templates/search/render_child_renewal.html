@@ -1,0 +1,17 @@
+<div class="grid-col-4">
+  <a href="/cceid/{{ renewal['uuid'] }}">
+    {{ renewal['renewal_num'] }} {{ renewal['renewal_date'] }}
+  </a>
+</div>
+
+<div class="grid-col-6">
+  <div>
+    {{ renewal['author'] }} {{ renewal['title'] }}
+  </div>
+
+  <ul class="usa-list usa-list--unstyled">
+    {% for cl in renewal['claimants'] %}
+    <li>{{ cl['name'] }} ({{ cl['type'] }})</li>
+    {% endfor %}
+  </ul>
+</div>

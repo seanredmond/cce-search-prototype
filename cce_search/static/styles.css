@@ -1,0 +1,31 @@
+.info-card {
+    border: 2px solid black;
+    border-radius: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+}
+
+.info-card dt {
+    font-weight: bold;
+}
+
+.info-card dd {
+    padding-bottom: 0.5em;
+}
+
+.info-card ul.child-renewal {
+    padding-left: 0;
+}
+
+fieldset.usa-fieldset legend {
+    margin-bottom: 8px;
+}
+
+.pagination {
+    text-align: center;
+}
+
+nav.pagination li {
+    display: inline-block;
+    padding: 0 1em;
+}

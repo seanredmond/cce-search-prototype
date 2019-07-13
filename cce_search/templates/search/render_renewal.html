@@ -1,0 +1,48 @@
+<div class="info-card renewal grid-container">
+  <h3>Renewal {{ result['renewal_num'] }}</h3>
+
+  <div>
+    <dl class="grid-row">
+      <dt class="grid-col-2">Title</dt>
+      <dd class="grid-col-9">{{ result['title'] }}</dd>
+      
+      <dt class="grid-col-2">Authors</dt>
+      <dd class="grid-col-9">{{ result['author'] }}</dd>
+
+      <dt class="grid-col-2">Renewal</dt>
+      <dd class="grid-col-9">
+        {{ result['renewal_num'] }} {{ result['renewal_date'] }}
+      </dd>
+
+      <dt class="grid-col-2">Claimants</dt>
+      <dd class="grid-col-9">
+        <ul class="usa-list usa-list--unstyled">
+          {% for c in result['claimants'] %}
+          <li>{{ c['name'] }} ({{ c['type'] }})</li>
+          {% endfor %}
+        </ul>
+      </dd>
+
+      {% if result['new_matter'] %}
+      <dt class="grid-col-2">New Matter</dt>
+      <dd class="grid-col-9">{{ result['new_matter'] }}</dd>
+      {% endif %}
+
+      {% if result['notes'] %}
+      <dt class="grid-col-2">Notes</dt>
+      <dd class="grid-col-9">{{ result['notes'] }}</dd>
+      {% endif %}
+
+      {% if result['source'] %}
+      <dt class="grid-col-2">Original</dt>
+      <dd class="grid-col-9">{{ result['source'] }}</dd>
+      {% endif %}
+      
+      <dt class="grid-col-2">CCEID</dt>
+      <dd class="grid-col-9">
+        <a href="/cceid/{{ result['uuid'] }}">{{ result['uuid'] }}</a>
+      </dd>
+    </dl>
+  </div>
+</div>
+

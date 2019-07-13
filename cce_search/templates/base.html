@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="utf-8">
+  <title>{% block title %}{% endblock %} - CCE Search</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='uswds.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="usa-banner">
+    <header class="usa-banner__header">
+      <nav>
+        <h1>CCE Search</h1>
+        <ul>
+          <li><a href="{{ url_for('search.index') }}">Search</a>
+        </ul>
+      </nav>
+    </header>
+  </div>
+
+  <main id="main-content" class="grid-container">
+    {% block header %}{% endblock %}
+    {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+    {% endfor %}
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="usa-footer usa-footer--slim" role="contentinfo">
+    <div class="grid-container usa-footer__return-to-top">
+      <a href="#">Return to top</a>
+    </div>
+    <div class="usa-footer__primary-section">
+      <div class="grid-row grid-row maxw-desktop margin-x-auto desktop:padding-x-4">
+        <div class="mobile-lg:grid-col-8">
+          <nav class="usa-footer__nav">
+            <ul class="add-list-reset grid-row grid-gap">
+              <li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+                Footer stuff
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>

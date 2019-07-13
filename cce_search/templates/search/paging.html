@@ -1,0 +1,27 @@
+{% if paging["has_pages"] %}
+<nav aria-label="pagination" class="pagination">
+  <ul class="usa-list usa-list--unstyled">
+    {% if paging['pages']['first'] %}
+    <li><a href="{{ paging['pages']['first'] }}">First<a></li>
+    {% endif %}
+
+    {% if paging['pages']['previous'] %}
+    <li><a href="{{ paging['pages']['previous'] }}">Previous<a></li>
+    {% endif %}
+
+    <li>Page {{ paging["current_page"] }} of {{ paging["last_page"] }}</li>
+
+    {% if paging['pages']['next'] %}
+    <li><a href="{{ paging['pages']['next'] }}">Next<a></li>
+    {% endif %}
+
+    {% if paging['pages']['last'] %}
+    <li><a href="{{ paging['pages']['last'] }}">Last<a></li>
+    {% endif %}
+
+  </ul>
+</nav>
+{% else %}
+<div class="pagination">Page 1 of 1</div>
+{% endif %}
+

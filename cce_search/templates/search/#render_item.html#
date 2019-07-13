@@ -1,0 +1,58 @@
+{% if result['registrations'] %}
+<dl>
+  <dt>Title</dt>
+  <dd>{{ result['title'] }}</dd>
+
+  <dt>Registrations</dt>
+  <dd>
+    <ul>
+      {% for reg in result['registrations'] %}
+      <li>
+        <dl>
+          <dt>ID</dt>
+          <dd>{{ reg['number'] }}</dd>
+
+          <dt>Date</dt>
+          <dd>{{ reg['date'] }}</dd>
+        </dl>
+      </li>
+      {% endfor %}
+    </ul>
+  </dd>
+is  
+  {% if result['renewals'] %}
+  <dt>Renewals</dt>
+  <dd>
+    <ul>
+      {% for ren in result['renewals'] %}
+      <li>
+        <dl>
+          <dt>ID</dt>
+          <dd>{{ ren['renewal_num'] }}</dd>
+
+          <dt>Date</dt>
+          <dd>{{ ren['renewal_date'] }}</dd>
+
+          <dt>JSON</dt>
+          <dd>{{ ren }}</dd>
+        </dl>
+      </li>
+      {% endfor %}
+    </ul>
+  </dd>
+  {% endif %}
+
+  <dt>Source</dt>
+  <dd><a href="{{ result['source']['url'] }}#page/{{ result['source']['page'] }}">src</a></dd>
+
+
+  <dt>JSON</dt>
+  <dd>{{ result }}</dd>
+</dl>
+{% else %}
+RENEWAL
+<dl>
+  <dt>JSON</dt>
+  <dd>{{ result }}</dd>
+</dl>
+{% endif %}
