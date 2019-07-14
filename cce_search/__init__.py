@@ -1,5 +1,5 @@
 import os
-from flask import Flask, send_from_directory
+from flask import Flask, send_from_directory, render_template
 
 
 def create_app(test_config=None):
@@ -31,9 +31,9 @@ def create_app(test_config=None):
     app.add_url_rule('/', endpoint='index')
     
     # a simple page that says hello
-    @app.route('/hello')
-    def hello():
-        return api.search()
+    @app.route('/about')
+    def about():
+        return render_template('about.html')
 
     @app.route('/fonts/<path:path>')
     def send_fonts(path):
