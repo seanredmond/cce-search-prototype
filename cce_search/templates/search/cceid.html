@@ -5,6 +5,10 @@
 {% endblock %}
 
 {% block content %}
-{{ results }}
+{% if result["type"] %}
+{% include "search/render_renewal.html" %}
+{% else %}
+{% include "search/render_registration.html" %}
+{% endif %}
 {% endblock %}
   

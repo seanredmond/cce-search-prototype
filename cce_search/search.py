@@ -111,14 +111,15 @@ def extract_last(pg):
 def cceid(cceid):
     try:
         results = registration(cceid)
-        return render_template('search/cceid.html', results=results)
+        return render_template('search/cceid.html', result=results["data"])
     except HTTPError:
         try:
             results = renewal(cceid)
-            return render_template('search/cceid.html', results=results)
+            return render_template('search/cceid.html',
+                                   result=results["data"][0])
         except HTTPError:
             pass
 
-    return render_template('search/cceid.html', results=None, error=1)
+    return render_template('search/cceid.html', result=None, error=1)
     
         
