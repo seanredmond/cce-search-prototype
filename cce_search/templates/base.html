@@ -5,18 +5,41 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='uswds.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
-<body>
-  <div class="usa-banner">
-    <header class="usa-banner__header">
-      <nav>
-        <h1>CCE Search</h1>
-        <ul>
-          <li><a href="{{ url_for('search.index') }}">Search</a>
-        </ul>
-      </nav>
-    </header>
-  </div>
 
+
+<body>
+  <a class="usa-skipnav" href="#main-content">Skip to main content</a>
+  
+
+  <header class="usa-header usa-header--basic grid-container" role="banner">
+    <div class="grid-row">
+      <div class="grid-col-10">
+        <div class="usa-logo">
+          <h1 class="usa-logo__text">
+            <a href="/" title="Home" aria-label="Home">US Copyright Search</a>
+          </h1>
+        </div>
+
+        <div>Search for copyright registrations and renewals on books from the <i>Catalog of Copyright Entries</i></div>
+      </div>
+      <div class="grid-col-2">
+        <nav role="navigation" class="usa-nav">
+          <ul class="usa-nav__primary usa-accordion">
+            <li class="usa-nav__primary-item">
+              <a class="usa-nav__link" href="/">Search</a>
+            </li>
+            <li class="usa-nav__primary-item">
+              <a class="usa-nav__link" href="/about">About
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+
+  
   <main id="main-content" class="grid-container">
     {% block header %}{% endblock %}
     {% for message in get_flashed_messages() %}
