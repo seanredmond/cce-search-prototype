@@ -25,7 +25,20 @@ fieldset.usa-fieldset legend {
     text-align: center;
 }
 
+nav.pagination {
+    margin-bottom: 1rem;
+}
+
 nav.pagination li {
     display: inline-block;
     padding: 0 1em;
+}
+
+header {
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.usa-logo {
+    margin-top: 0;
 }
