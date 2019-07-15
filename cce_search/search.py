@@ -60,8 +60,11 @@ def strip_tags(xml):
 
 def ia_url(src):
     #return src
-    return "{}#page/{:d}/mode/1up".format(src.get('url', ''),
+    return "{}#page/{:d}/mode/1up".format(ia_stream(src.get('url', '')),
                                         src.get('page', 0))
+
+def ia_stream(url):
+    return url.replace('details', 'stream')
 
 def proc_pagination(pg, current):
     if not pg['next'] and not pg['previous']:
