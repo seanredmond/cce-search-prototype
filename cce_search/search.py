@@ -22,12 +22,12 @@ def index():
                               request.args.get('per_page'))
         elif request.args['type'] == 'reg':
             search_type = "reg"
-            response = reg_search(request.args['term'],
+            response = reg_search(request.args['term'].strip().upper(),
                                   request.args.get('page'),
                                   request.args.get('per_page'))
         else:
             search_type = "ren"
-            response = ren_search(request.args['term'],
+            response = ren_search(request.args['term'].strip().upper(),
                                   request.args.get('page'),
                                   request.args.get('per_page'))
             
