@@ -57,6 +57,9 @@
       
       <dt class="grid-col-2">Renewals</dt>
       <dd class="grid-col-9">
+        {% if result['is_post_1963'] %}
+        <em>Works published after 1963 do not require renewal and are in copyright</em>
+        {% else %}
         {% if result['renewals'] %}
         <ul class="child-renewal grid-container usa-list usa-list--unstyled">
           {% for renewal in result['renewals'] %}
@@ -68,7 +71,7 @@
         {% else %}
         <em>No renewals found</em>
         {% endif %}
-        
+        {% endif %}
       </dd>
       
       <dt class="grid-col-2">Source</dt>

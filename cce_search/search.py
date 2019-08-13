@@ -51,6 +51,7 @@ def enhance_results(r):
         return r
 
     return {**r, **{'original': strip_tags(r.get('xml')),
+                    'is_post_1963': is_post_1963(r.get('registrations')),
                     'source_url': ia_url(r.get('source', {}))}}
 
 
@@ -67,6 +68,11 @@ def ia_url(src):
 
 def ia_stream(url):
     return url.replace('details', 'stream')
+
+
+def is_post_1963(regs):
+    return any([r['date'] > '1963' for r in regs])
+
 
 def proc_pagination(pg, current):
     if not pg['next'] and not pg['previous']:
