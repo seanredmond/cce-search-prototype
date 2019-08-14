@@ -35,6 +35,12 @@ def create_app(test_config=None):
     def about():
         return render_template('about.html')
 
+
+    # a simple page that says hello
+    @app.route('/registration-classes')
+    def regclasses():
+        return render_template('registration_classes.html')
+    
     @app.route('/fonts/<path:path>')
     def send_fonts(path):
         return send_from_directory('fonts', path)

@@ -52,6 +52,8 @@ def enhance_results(r):
 
     return {**r, **{'original': strip_tags(r.get('xml')),
                     'is_post_1963': is_post_1963(r.get('registrations')),
+                    'is_foreign': is_foreign(r.get('registrations')),
+                    'is_interim': is_interim(r.get('registrations')),
                     'source_url': ia_url(r.get('source', {}))}}
 
 
@@ -72,6 +74,14 @@ def ia_stream(url):
 
 def is_post_1963(regs):
     return any([r['date'] > '1963' for r in regs])
+
+
+def is_foreign(regs):
+    return any([r['number'][:2] == 'AF' for r in regs])
+
+
+def is_interim(regs):
+    return any([r['number'][:2] == 'AI' for r in regs])
 
 
 def proc_pagination(pg, current):

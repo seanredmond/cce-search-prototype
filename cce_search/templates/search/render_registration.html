@@ -72,6 +72,14 @@
         <em>No renewals found</em>
         {% endif %}
         {% endif %}
+
+        {% if result['is_foreign'] %}
+        <p>See note on <a href="/registration-classes#foreign">Foreign publications</a></p>
+        {% endif %}
+
+        {% if result['is_interim'] %}
+        <p>See note on <a href="/registration-classes#interim">Interim registrations</a></p>
+        {% endif %}
       </dd>
       
       <dt class="grid-col-2">Source</dt>
